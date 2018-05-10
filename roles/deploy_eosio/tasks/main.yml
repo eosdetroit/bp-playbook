@@ -1,0 +1,3 @@
+---
+- name: Start nodeos
+  command: docker run -d --name nodeos -v /data:/opt/eosio/bin/data-dir -p 8888:8888 -p 9876:9876 -t eosio/eos:latest nodeosd.sh
