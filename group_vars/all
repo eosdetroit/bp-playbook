@@ -1,3 +1,13 @@
 ---
 ansible_python_interpreter: /usr/bin/python3
 deploy_user: ubuntu
+
+host_data_dir: /data
+eosio_container_data_dir: /opt/eosio/bin/data-dir
+container_http_port: 8888
+container_p2p_port: 9876
+docker_hub_image: eosio/eos
+image_tag: latest
+eosio_network_name: hacktildawn
+agent_name: EOS Detroit
+producer_name: eosiodetroit
