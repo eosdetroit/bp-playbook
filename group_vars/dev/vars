@@ -1,0 +1,2 @@
+---
+public_block_signing_key: '{{ vault_public_block_signing_key }}'
