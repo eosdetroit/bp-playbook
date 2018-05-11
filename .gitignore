@@ -1,3 +1,4 @@
 *.nodes
 *.retry
 vault.yml
+.DS_Store
