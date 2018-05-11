@@ -1,3 +1,22 @@
 ---
-- name: Start nodeos
-  command: docker run -d --name nodeos -v /data:/opt/eosio/bin/data-dir -p 8888:8888 -p 9876:9876 -t eosio/eos:latest nodeosd.sh
+- name: Write nodeos config
+  template:
+    src: config.ini.j2
+    dest: "{{ host_data_dir }}/config.ini"
+
+- name: Copy genesis.json
+  copy:
+    src: "{{ eosio_network_name }}/genesis.json"
+    dest: "{{ host_data_dir }}/genesis.json"
+
+- name: Start nodeos container
+  docker_container:
+    restart: yes
+    image: "{{ docker_hub_image }}:{{ image_tag }}"
+    name: nodeos
+    command: /opt/eosio/bin/nodeosd.sh
+    volumes:
+      - "{{ host_data_dir }}:{{ eosio_container_data_dir }}"
+    published_ports:
+      - "{{ container_http_port }}:{{ container_http_port }}"
+      - "{{ container_p2p_port }}:{{ container_p2p_port }}"

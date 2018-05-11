@@ -5,3 +5,4 @@
   roles:
     - install_deps
     - deploy_eosio
+    - setup_nginx_tls

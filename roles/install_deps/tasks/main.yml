@@ -54,8 +54,7 @@
 - user:
     name: '{{ deploy_user }}'
 
-- name: Create /data directory
+- name: Create {{ host_data_dir }} directory
   file: 
-    path: /data
+    path: "{{ host_data_dir }}"
     state: directory
-

@@ -11,3 +11,6 @@ image_tag: latest
 eosio_network_name: hacktildawn
 agent_name: EOS Detroit
 producer_name: eosiodetroit
+p2p_server_address: hacktildawn.eosdetroit.com
+domain_name: hacktildawn.eosdetroit.com
+letsencrypt_email: rob@eosdetroit.com
