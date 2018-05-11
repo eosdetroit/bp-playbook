@@ -2,7 +2,7 @@
 
 This playbook is designed to make remote management of EOS nodes a breeze.
 
-Currently `deploy_bp.yml` will install system dependencies, create a docker container running nodeos, and put an nginx reverse proxy in front of it.
+Currently `deploy_bp.yml` will install system dependencies, create a docker container running nodeos, and put an nginx TLS reverse proxy in front of it.
 
 Tested using Ansible 2.3.2.0 deploying to Ubuntu 16.04.
 
