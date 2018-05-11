@@ -36,7 +36,7 @@ ansible-vault encrypt group_vars/dev/vault.yml
  --key-file required if using ssh key authentication
 
 ```
-ansible-playbook -vvv -i dev.nodes -e "target=hacktildawn" --key-file ~/.ssh/hacktildawn.pem deploy_bp.yml
+ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn" --key-file ~/.ssh/hacktildawn.pem deploy_bp.yml
 ```
 
 ## TODO
