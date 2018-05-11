@@ -7,7 +7,7 @@ eosio_container_data_dir: /opt/eosio/bin/data-dir
 container_http_port: 8888
 container_p2p_port: 9876
 docker_hub_image: eosio/eos
-image_tag: latest
+image_tag: dawn-v4.0.0
 eosio_network_name: hacktildawn
 agent_name: EOS Detroit
 producer_name: eosiodetroit
