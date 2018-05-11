@@ -36,10 +36,22 @@ ansible-vault encrypt group_vars/dev/vault.yml
  --key-file required if using ssh key authentication
 
 ```
-ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn" --key-file ~/.ssh/hacktildawn.pem deploy_bp.yml
+ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn image_tag=20180509" --key-file ~/.ssh/hacktildawn.pem deploy_bp.yml
 ```
 
+## Playbook vars (Can be passed to -e)
+host_data_dir [defaults to: /data] the volume to be mounted on the host system.
+eosio_container_data_dir [defaults to: /opt/eosio/bin/data-dir] the data directory to be mounted on the container. Contains config.ini and genesis.json.
+container_http_port [defaults to: 8888] The port to expose to the host system for http requests.
+container_p2p_port [defaults to: 9876] The port to expose to the host system for p2p requests.
+docker_hub_image [defaults to: eosio/eos] The docker image to use for the container.
+image_tag [defaults to: latest] The docker image tag or version to use.
+eosio_network_name [defaults to: hacktildawn] A nickname for the network. Used to retrieve the appropriate genesis.json file.
+agent_name [defaults to: EOS Detroit] A nickname for your nodeos.
+producer_name [defaults to: eosiodetroit] The name of your producer account.
+p2p_server_address [defaults to: hacktildawn.eosdetroit.com] The domain name for your node p2p connection. Should be kept secret on main nets.
+domain_name [defaults to: hacktildawn.eosdetroit.com] The domain name for your https connection (API node).
+letsencrypt_email [defaults to: rob@eosdetroit.com] The email address to use for letsencrypt.
+
 ## TODO
- - Allow a container image to be updated to a new version while preserving chain data.
-   - specify whether to preserve or destroy chain data.
  - Allow a node "type" to be specified (producer, api, storage, etc.)
