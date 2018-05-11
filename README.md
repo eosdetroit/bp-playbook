@@ -55,7 +55,7 @@ ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn image
  - p2p_server_address [defaults to: hacktildawn.eosdetroit.com] The domain name for your node p2p connection. Should be kept secret on main nets.
  - domain_name [defaults to: hacktildawn.eosdetroit.com] The domain name for your https connection (API node).
  - letsencrypt_email [defaults to: rob@eosdetroit.com] The email address to use for letsencrypt.
+ - p2p_peers [] A list of peers to connect to.
 
 ## TODO
  - Allow a node "type" to be specified (producer, api, storage, etc.)
- - Template p2p-peer-address values into config.ini
