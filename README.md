@@ -56,3 +56,4 @@ ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn image
 
 ## TODO
  - Allow a node "type" to be specified (producer, api, storage, etc.)
+ - Template p2p-peer-address values into config.ini
