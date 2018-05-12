@@ -1,0 +1,9 @@
+---
+eosio_network_name: superhero
+p2p_server_address: ctestnet.eosdetroit.com
+domain_name: ctestnet.eosdetroit.com
+p2p_peers:
+  - ctestnet.eosio.se:63987
+  - eosgreen.uk.to:9805
+container_http_port: 8889
+container_p2p_port: 1339
