@@ -39,7 +39,7 @@ ansible-vault encrypt group_vars/dev/vault.yml
  - --key-file [required if using ssh key authentication]
 
 ```
-ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn image_tag=20180509" --key-file ~/.ssh/hacktildawn.pem deploy_bp.yml
+ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn" --key-file ~/.ssh/hacktildawn.pem deploy_bp.yml
 ```
 
 ## Playbook vars (Can be passed to -e)
@@ -48,7 +48,7 @@ ansible-playbook --ask-vault-pass -vvv -i dev.nodes -e "target=hacktildawn image
  - container_http_port [defaults to: 8888] The port to expose to the host system for http requests.
  - container_p2p_port [defaults to: 9876] The port to expose to the host system for p2p requests.
  - docker_hub_image [defaults to: eosio/eos] The docker image to use for the container.
- - image_tag [defaults to: latest] The docker image tag or version to use.
+ - image_tag [defaults to: dawn-v4.0.0] The docker image tag or version to use.
  - eosio_network_name [defaults to: hacktildawn] A nickname for the network. Used to retrieve the appropriate genesis.json file.
  - agent_name [defaults to: EOS Detroit] A nickname for your nodeos.
  - producer_name [defaults to: eosiodetroit] The name of your producer account.
