@@ -1,13 +1,35 @@
 ---
 ansible_python_interpreter: /usr/bin/python3
 deploy_user: ubuntu
-
 host_data_dir: /data
 eosio_container_data_dir: /opt/eosio/bin/data-dir
 container_http_port: 8888
 container_p2p_port: 9876
 docker_hub_image: eosio/eos
-image_tag: dawn-v4.0.0
+image_tag: 20180530
 agent_name: EOS Detroit
 producer_name: eosiodetroit
+website_url: https://eosdetroit.com
 letsencrypt_email: rob@eosdetroit.com
+target_network_is_test: 1
+eosbios_version: 0.9.11
+seed_network_http_address: http://stage18.eosn.io:8888
+seed_network_peers:
+  - eoscanadacom
+  - eospherebios
+  - eosnewyorkio
+  - eoslaomaocom
+  - eosargentina
+  - eosauthority
+  - eoscafeblock
+  - eosmetalbios
+  - oraclechaino
+  - eosbixinboot
+  - blocksmithio
+  - eostitanboot
+  - eoscybexiobp
+  - eosmesodotio
+  - eosjapanjeda
+  - eosnairobike
+target_p2p_address: 18.220.100.111
+target_http_address: http://18.220.100.111

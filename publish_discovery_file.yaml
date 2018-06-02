@@ -3,6 +3,4 @@
   become: yes
   become_user: root
   roles:
-    - install_deps
-    - deploy_eosio
     - eosbios

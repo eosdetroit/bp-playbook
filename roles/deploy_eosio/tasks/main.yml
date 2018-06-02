@@ -4,14 +4,10 @@
     src: config.ini.j2
     dest: "{{ host_data_dir }}/config.ini"
 
-- name: Copy genesis.json
-  copy:
-    src: "{{ eosio_network_name }}/genesis.json"
-    dest: "{{ host_data_dir }}/genesis.json"
-
-- name: Start nodeos container
+- name: Create nodeos container
   docker_container:
     restart: yes
+    state: present
     image: "{{ docker_hub_image }}:{{ image_tag }}"
     name: nodeos
     command: /opt/eosio/bin/nodeosd.sh

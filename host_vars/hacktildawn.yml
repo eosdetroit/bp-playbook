@@ -3,5 +3,5 @@ eosio_network_name: hacktildawn
 p2p_server_address: hacktildawn.eosdetroit.com
 domain_name: hacktildawn.eosdetroit.com
 p2p_peers:
-  - 165.227.40.97:9876 # EOS Nation
-  
+  - hack-til-dawn.eosnation.io:9876 # EOS Nation
+  - hackathon.eoscalgary.io:9876 # EOS Cafe

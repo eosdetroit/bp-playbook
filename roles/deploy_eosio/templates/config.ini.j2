@@ -1,3 +1,7 @@
+max-irreversible-block-age=5000000
+get-transactions-time-limit = 3
+
+
 # File to read Genesis State from (eosio::chain_plugin)
 genesis-json = "genesis.json"
 
@@ -13,8 +17,11 @@ block-log-dir = "blocks"
 # Override default WASM runtime (eosio::chain_plugin)
 # wasm-runtime = 
 
-# Maximum size MB of database shared memory file (eosio::chain_plugin)
-shared-memory-size-mb = 1024
+# Maximum size (in MB) of the chain state database
+chain-state-db-size-mb = 1024
+
+# Maximum size (in MB) of the reversible blocks database
+reversible-blocks-db-size-mb = 340  # 340 blocks based on 21 producer BFT delay
 
 # Track only transactions whose scopes involve the listed accounts. Default is to track all transactions. (eosio::history_plugin)
 # filter_on_accounts = 
@@ -38,18 +45,16 @@ access-control-allow-origin = *
 access-control-allow-headers = Content-Type
 
 # Specify if Access-Control-Allow-Credentials: true should be returned on each request. (eosio::http_plugin)
-access-control-allow-credentials = true
+access-control-allow-credentials = false
 
 # The actual host:port used to listen for incoming p2p connections. (eosio::net_plugin)
 p2p-listen-endpoint = 0.0.0.0:9876
 
 # An externally accessible host:port for identifying this node. Defaults to p2p-listen-endpoint. (eosio::net_plugin)
-p2p-server-address = {{ p2p_server_address }}:{{ container_p2p_port }}
+p2p-server-address = {{ target_p2p_address }}:{{ container_p2p_port }}
 
 # The public endpoint of a peer node to connect to. Use multiple p2p-peer-address options as needed to compose a network. (eosio::net_plugin)
-{% for peer in p2p_peers %}
-p2p-peer-address = {{ peer }}
-{% endfor %}
+
 
 # The name supplied to identify this node amongst the peers. (eosio::net_plugin)
 agent-name = "{{ agent_name }}"
@@ -70,7 +75,7 @@ max-clients = 25
 connection-cleanup-period = 30
 
 # True to require exact match of peer network version. (eosio::net_plugin)
-network-version-match = 0
+network-version-match = 1
 
 # number of blocks to retrieve in a chunk from any individual peer during synchronization (eosio::net_plugin)
 sync-fetch-span = 5000

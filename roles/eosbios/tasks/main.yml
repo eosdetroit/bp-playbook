@@ -1,0 +1,58 @@
+---
+- name: Create eos bios directory
+  file:
+    path: /data/eos-bios_{{ eosbios_version }}
+    state: directory
+    owner: "{{ deploy_user }}"
+
+- name: Downloading and unzipping eos-bios release {{ eosbios_version }}
+  unarchive:
+    src: https://github.com/eoscanada/eos-bios/releases/download/v{{ eosbios_version }}/eos-bios_{{ eosbios_version }}_linux_x86_64.tar.gz
+    dest: /data/eos-bios_{{ eosbios_version }}
+    remote_src: yes
+    owner: "{{ deploy_user }}"
+
+- name: Creating discovery file
+  template:
+    src: my_discovery_file.yaml.j2
+    dest: /data/eos-bios_{{ eosbios_version }}/my_discovery_file.yaml
+    owner: "{{ deploy_user }}"
+
+- name: Creating init hook
+  copy:
+    src: hook_init.sh
+    dest: /data/eos-bios_{{ eosbios_version }}/hook_init.sh
+    owner: "{{ deploy_user }}"
+    mode: u+rwx
+
+- name: Creating join network hook
+  copy:
+    src: hook_join_network.sh
+    dest: /data/eos-bios_{{ eosbios_version }}/hook_join_network.sh
+    owner: "{{ deploy_user }}"
+    mode: u+rwx
+
+- name: Creating done hook
+  copy:
+    src: hook_done.sh
+    dest: /data/eos-bios_{{ eosbios_version }}/hook_done.sh
+    owner: "{{ deploy_user }}"
+    mode: u+rwx
+
+- name: Creating boot node hook
+  copy:
+    src: hook_boot_node.sh
+    dest: /data/eos-bios_{{ eosbios_version }}/hook_boot_node.sh
+    owner: "{{ deploy_user }}"
+    mode: u+rwx
+
+- name: Creating seed_network.keys file
+  template:
+    src: seed_network.keys.j2
+    dest: /data/eos-bios_{{ eosbios_version }}/seed_network.keys
+    owner: "{{ deploy_user }}"
+
+- name: Publish discovery file
+  shell: ./eos-bios publish
+  args:
+    chdir: /data/eos-bios_{{ eosbios_version }}/
